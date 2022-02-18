@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Download\Python\AtividadeExtraclasseBD\Programa\Telas\TelaCadastro.ui'
+# Form implementation generated from reading ui file 'D:\Qt Designer\DesignsFeitos\TelaCadastro.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -9,17 +9,12 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtWidgets import QMainWindow
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(243, 232)
-        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(50, 180, 161, 32))
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(50, 40, 47, 13))
         self.label.setObjectName("label")
@@ -38,10 +33,14 @@ class Ui_Dialog(object):
         self.edtPreco = QtWidgets.QLineEdit(Dialog)
         self.edtPreco.setGeometry(QtCore.QRect(100, 130, 113, 20))
         self.edtPreco.setObjectName("edtPreco")
+        self.btnOk = QtWidgets.QPushButton(Dialog)
+        self.btnOk.setGeometry(QtCore.QRect(20, 190, 75, 23))
+        self.btnOk.setObjectName("btnOk")
+        self.btnCancelar = QtWidgets.QPushButton(Dialog)
+        self.btnCancelar.setGeometry(QtCore.QRect(140, 190, 75, 23))
+        self.btnCancelar.setObjectName("btnCancelar")
 
         self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept) # type: ignore
-        self.buttonBox.rejected.connect(Dialog.reject) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -50,3 +49,21 @@ class Ui_Dialog(object):
         self.label.setText(_translate("Dialog", "Nome:"))
         self.label_2.setText(_translate("Dialog", "Peso:"))
         self.label_3.setText(_translate("Dialog", "Preço:"))
+        self.btnOk.setText(_translate("Dialog", "Ok"))
+        self.btnCancelar.setText(_translate("Dialog", "Cancelar"))
+
+class TelaCadastro(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Dialog()
+
+        self.ui.setupUi(self)
+
+        self.ui.btnOk      .clicked.connect(self.adiciona)
+        self.ui.btnCancelar.clicked.connect(self.cancela )
+    
+    def adiciona(self):
+        print("Adiciona clicado!")
+
+    def cancela(self):
+        print("Remove clicado!")
