@@ -9,7 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtWidgets import QMainWindow, QDialog
+from DialogCadastro import DialogCadastro
+from TelaCadastro import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -87,3 +89,31 @@ class Ui_MainWindow(object):
         self.btnAdicionar.setText(_translate("MainWindow", "Adicionar"))
         self.btnAtualizar.setText(_translate("MainWindow", "Atualizar"))
         self.btnRemover.setText(_translate("MainWindow", "Remover"))
+
+class TelaPrincipal(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+
+        self.ui.setupUi(self)
+
+        self.ui.btnPesquisar.clicked.connect(self.pesquisa)
+        self.ui.btnAdicionar.clicked.connect(self.adiciona)
+        self.ui.btnAtualizar.clicked.connect(self.atualiza)
+        self.ui.btnRemover  .clicked.connect(self.remove  )
+    
+    def pesquisa(self):
+        print("Pesquisa clicado!")
+    
+    def adiciona(self):
+        w = DialogCadastro(self)
+        w.exec()
+        print("Adiciona clicado!")
+
+    def atualiza(self):
+        w = DialogCadastro(self)
+        w.exec_()
+        print("Atualiza clicado!")
+
+    def remove(self):
+        print("Remove clicado!")
